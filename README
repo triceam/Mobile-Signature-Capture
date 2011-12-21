@@ -1,0 +1,6 @@
+Sample application showing how to capture touch (or mouse) based graphical input.  This was specfically intended for capturing user signatures on mobile applications, however this can easily be adapted for other use cases.
+
+There are 2 sample cross-platform solutions in the project: 1 developed using Adobe Flex and AIR, and one developed using HTML5 & PhoneGap.   The server-side component is written using Adobe ColdFusion.
+
+You can read more about this application, as well as see a video of it in use at: 
+http://www.tricedesigns.com/2011/12/21/capturing-user-signatures-in-mobile-applications

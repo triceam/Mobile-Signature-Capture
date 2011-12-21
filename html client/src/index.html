@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+<title>Signature Capture</title>
+
+<script src="js/jquery-1.7.min.js"></script>
+<script src="js/modernizr.custom.34982.js"></script>
+
+<script src="js/application.js"></script>
+<script src="js/signatureCapture.js"></script>
+<link rel="stylesheet" href="assets/styles.css" />
+
+</head>
+
+<body>
+	
+    <img src="assets/phonegap.png" />
+    
+    <h2>SAMPLE FORM</h2>
+    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, arcu eget varius placerat, est turpis tincidunt lectus, vitae semper enim libero sed odio. Curabitur interdum mattis tellus interdum rutrum. Integer vel cursus elit. Praesent et nisl non libero egestas tincidunt eget pellentesque risus. Proin facilisis nulla quis odio lobortis venenatis. </div>
+    
+    <h2>EMAIL</h2>
+    <input id="email" type="email" />
+    
+    <h2>SIGNATURE</h2>
+    <div id="canvasContainer" width="100%" >
+    	<canvas id="signature" height="200px" />
+    </div>
+    
+    <div id="lowerControls">
+    	<div id="feedback"></div>
+        <div id="buttonsContainer">
+            <input type="image" id="submit" src="assets/accept.png" />
+            <input type="image" id="cancel" src="assets/cancel.png" />
+        </div>
+    </div>
+</body>
+</html>

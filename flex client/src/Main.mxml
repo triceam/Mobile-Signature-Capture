@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" xmlns:local="*" xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Declarations>
+		<s:RemoteObject id="service"
+						destination="ColdFusion"
+						source="path.to.cfc.Services"
+						endpoint="http://myserver.com/flex2gateway/" />
+		<mx:EmailValidator id="emailValidator" required="true" source="{ email }"  />
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.ValidationResultEvent;
+			
+			private function submit() : void
+			{
+				var event : ValidationResultEvent = emailValidator.validate( email.text );
+				if ( event.type == ValidationResultEvent.VALID )
+				{
+					var sigString :String = sig.toString();
+					service.submitSignature( email.text, sigString );
+					
+					feedback.text = "Thank you";
+					feedback.setStyle( "color", 0x006600 );
+					sig.clear();
+					email.text = "";
+				}
+				else
+				{
+					feedback.text = "Please enter a valid email."
+					feedback.setStyle( "color", 0x990000 );
+				}
+			}
+			
+			private function reset() : void
+			{
+				email.text = "";
+				sig.clear();
+				feedback.text = "";
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:Image source="@Embed('assets/flex.png')" />
+	
+	<s:Spacer height="25" />
+	
+	<s:Label text="SAMPLE FORM" fontWeight="bold" />
+	<s:Label width="{ width-50 }">
+		<s:text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, arcu eget varius placerat, est turpis tincidunt lectus, vitae semper enim libero sed odio. Curabitur interdum mattis tellus interdum rutrum. Integer vel cursus elit. Praesent et nisl non libero egestas tincidunt eget pellentesque risus. Proin facilisis nulla quis odio lobortis venenatis. Sed mollis tortor eu sem eleifend sit amet posuere dui luctus. Ut accumsan sem ullamcorper dolor adipiscing eget lacinia magna faucibus. Praesent scelerisque dignissim tortor eget iaculis. Ut tempor, neque condimentum congue vehicula, lorem libero venenatis est, id mollis lectus risus ac risus. Mauris lacinia accumsan neque, pharetra vulputate nibh feugiat eleifend.</s:text>
+	</s:Label>
+	
+	<s:Spacer height="25" />
+	
+	
+	<s:Label text="EMAIL" fontWeight="bold" />
+	<s:TextInput id="email" width="100%"  />
+	
+	<s:Spacer height="25" />
+	
+	<s:Label text="SIGNATURE" fontWeight="bold" />
+	<local:SignatureCapture id="sig" width = "100%" height="200" />
+	
+	<s:Spacer height="25" />
+	
+	<s:HGroup width="100%" horizontalAlign="right">
+		<s:Label id="feedback" width="100%" />
+		<s:Button label="Submit" click="submit()" skinClass="skins.SubmitButtonSkin"/>
+		<s:Button label="Clear" click="reset()" skinClass="skins.CancelButtonSkin"/>
+	</s:HGroup>
+	
+	
+	<s:layout>
+		<s:VerticalLayout paddingBottom="25" paddingLeft="25" paddingRight="25" paddingTop="25" gap="0" />
+	</s:layout>
+	
+	
+</s:Application>
